@@ -18,6 +18,11 @@ python -m venv venv
 
 # Testing
 
+To run the next commands, you might need to run this as administrator: 
+```powershell
+Set-ExecutionPolicy RemoteSigned
+```
+
 ## Start the React app
 Open terminal/powershell, and run 
 ```bash
