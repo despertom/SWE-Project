@@ -16,12 +16,13 @@ python -m venv venv
 (venv) pip install flask python-dotenv
 ```
 
-To run the next commands, you might need to run this as administrator: 
+## React
+
+To run the next yarn commands, you might need to run this as administrator: 
 ```powershell
 Set-ExecutionPolicy RemoteSigned
 ```
 
-## React
 Run the following to install dependencies of the project.
 ```powershell
 yarn install
