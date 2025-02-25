@@ -14,7 +14,10 @@ Now you'll create a python virtual environment. This will hold flask. From the p
 cd api
 python -m venv venv
 .\venv\Scripts\activate
-(venv) pip install flask python-dotenv
+```
+With venv activated, run
+```powershell
+pip install flask python-dotenv
 ```
 
 ## React
