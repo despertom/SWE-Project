@@ -6,6 +6,16 @@ Download [python 3.X](https://www.python.org/downloads/). Version 3.9 or higher 
 ## Install Node.js
 [Download](https://nodejs.org/en) and run the installer.
 
+# Repository Setup
+
+## Flask
+Now you'll create a python virtual environment. This will hold flask. From the /api directory, run
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+(venv) pip install flask python-dotenv
+```
+
 # Testing
 
 ## Start the React app
@@ -21,13 +31,3 @@ Open terminal/powershell, and run
 yarn start-api
 ```
 Say yes to any files it needs.
-
-# Repository Setup
-
-## Flask
-Now you'll create a python virtual environment. This will hold flask. From the /api directory, run
-```powershell
-python -m venv venv
-.\venv\Scripts\activate
-(venv) pip install flask python-dotenv
-```
