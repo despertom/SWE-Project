@@ -29,6 +29,7 @@ Open terminal/powershell, and run
 yarn start
 ```
 Say yes to any files it needs. 
+After starting, the frontend can be viewed at http://localhost:3000/
 
 ## Start the Flask Backend
 Open terminal/powershell, and run 
@@ -36,3 +37,4 @@ Open terminal/powershell, and run
 yarn start-api
 ```
 Say yes to any files it needs.
+After starting, the backend can be viewed at http://localhost:5000/ROUTE
