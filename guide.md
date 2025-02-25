@@ -16,20 +16,18 @@ python -m venv venv
 (venv) pip install flask python-dotenv
 ```
 
+## React
+Run the following to install dependencies of the project.
+```powershell
+yarn install
+```
+
 # Testing
 
 To run the next commands, you might need to run this as administrator: 
 ```powershell
 Set-ExecutionPolicy RemoteSigned
 ```
-
-## Start the React app
-Open terminal/powershell, and run 
-```bash
-yarn start
-```
-Say yes to any files it needs. 
-After starting, the frontend can be viewed at http://localhost:3000/
 
 ## Start the Flask Backend
 Open terminal/powershell, and run 
@@ -38,3 +36,11 @@ yarn start-api
 ```
 Say yes to any files it needs.
 After starting, the backend can be viewed at http://localhost:5000/ROUTE
+
+## Start the React app
+Open terminal/powershell, and run 
+```bash
+yarn start
+```
+Say yes to any files it needs. 
+After starting, the frontend can be viewed at http://localhost:3000/
