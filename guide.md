@@ -49,3 +49,9 @@ yarn start
 ```
 Say yes to any files it needs. 
 After starting, the frontend can be viewed at http://localhost:3000/
+
+# Contributing
+## React
+You will be working in the src folder. 
+## Flask / MongoDB
+You will be working inside the api folder.
