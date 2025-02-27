@@ -9,19 +9,38 @@ Download [python 3.X](https://www.python.org/downloads/). Version 3.9 or higher 
 # Repository Setup
 
 ## Flask
-Now you'll create a python virtual environment. This will hold flask. From the /api directory, run
+Now you'll create a python virtual environment. This will hold flask. From the project root, run
 ```powershell
+cd api
 python -m venv venv
 .\venv\Scripts\activate
-(venv) pip install flask python-dotenv
+```
+With venv activated, run
+```powershell
+pip install flask python-dotenv
+```
+
+## React
+
+To run the next yarn commands, you might need to run this as administrator: 
+```powershell
+Set-ExecutionPolicy RemoteSigned
+```
+
+Run the following to install dependencies of the project.
+```powershell
+yarn install
 ```
 
 # Testing
 
-To run the next commands, you might need to run this as administrator: 
-```powershell
-Set-ExecutionPolicy RemoteSigned
+## Start the Flask Backend
+Open terminal/powershell, and run 
+```bash
+yarn start-api
 ```
+Say yes to any files it needs.
+After starting, the backend can be viewed at http://localhost:5000/ROUTE
 
 ## Start the React app
 Open terminal/powershell, and run 
@@ -31,10 +50,8 @@ yarn start
 Say yes to any files it needs. 
 After starting, the frontend can be viewed at http://localhost:3000/
 
-## Start the Flask Backend
-Open terminal/powershell, and run 
-```bash
-yarn start-api
-```
-Say yes to any files it needs.
-After starting, the backend can be viewed at http://localhost:5000/ROUTE
+# Contributing
+## React
+You will be working in the src folder. 
+## Flask / MongoDB
+You will be working inside the api folder.
