@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [currentTime, setCurrentTime] = useState(0);
+import Navbar from './components/Navbar'
+import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login'
 
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-
-        ... no changes in this part ...
-
-        <p>The current time is {currentTime}.</p>
-      </header>
-    </div>
-  );
+const App = () => {
+	return (
+		<Router>
+			<Navbar />
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/signup' element={<Signup />} />
+				<Route path='/login' element={<Login />} />
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
