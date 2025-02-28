@@ -15,19 +15,21 @@ cd api
 python -m venv venv
 .\venv\Scripts\activate
 ```
-With venv activated, run
+With venv activated, run this command in PowerShell:
 ```powershell
 pip install flask python-dotenv
 ```
 
 ## React
 
-To run the next yarn commands, you might need to run this as administrator: 
+To run the next yarn commands, you might need to run this as administrator in PowerShell: 
 ```powershell
 Set-ExecutionPolicy RemoteSigned
 ```
 
-Run the following to install dependencies of the project.
+You may need to install yarn. If you do not have the yarn command, follow the guide [here](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) to install it. You should be able to use NPM.
+
+Using PowerShell, run this command inside of the project directory to install dependencies of the project:
 ```powershell
 yarn install
 ```
@@ -35,7 +37,7 @@ yarn install
 # Testing
 
 ## Start the Flask Backend
-Open terminal/powershell, and run 
+Open PowerShell in the project directory, and run 
 ```bash
 yarn start-api
 ```
@@ -43,7 +45,7 @@ Say yes to any files it needs.
 After starting, the backend can be viewed at http://localhost:5000/ROUTE
 
 ## Start the React app
-Open terminal/powershell, and run 
+Open PowerShell in the project directory, and run 
 ```bash
 yarn start
 ```
