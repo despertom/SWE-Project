@@ -11,7 +11,7 @@ function Login() {
 
 	return (
 		<div className="login">
-			<header className="login-header">GreenGauge Login</header>
+			<header>GreenGauge Login</header>
 			<br />
 			<br />
 			<br />
@@ -30,7 +30,7 @@ function Login() {
 				<input value={password} onChange={e => setPassword(e.target.value)} />
 			</label>
 			<br/>
-			<button onClick={checkLogin} className="login-button">Log In</button>
+			<button onClick={checkLogin}>Log In</button>
 		</div>
 	);
 }

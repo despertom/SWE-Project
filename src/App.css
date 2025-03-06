@@ -29,15 +29,10 @@ nav a:hover {
 
 
 header {
-	
-}
-
-.login-header {
 	text-align: center;
-
 }
 
-.login-button {
+button {
 	margin: 0 auto;
 	display: block;
 }
