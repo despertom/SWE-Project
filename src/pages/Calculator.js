@@ -29,8 +29,9 @@ function Home() {
             setUserDefinedItems([...userDefinedItems, {id: id, value: num}])
             setOptionItems({
                 ...optionItems,
-                id: name
+                [id]: name
             });
+            setSelectedItem(id);
         } else if (selectedItem) {
             setSelectedItems([...selectedItems, {id: selectedItem, count: selectedCount}]); // TODO use object/json here to handle counts.
             setSelectedItem(""); // Unselect it
@@ -45,10 +46,10 @@ function Home() {
                 headers: {
                     'Content-Type': 'application/json', 
                 },
-                body: {
+                body: JSON.stringify({
                     userDefined: userDefinedItems,
                     selected: selectedItems,
-                }
+                }),
             });
     
             if (!res.ok) {
