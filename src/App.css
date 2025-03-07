@@ -29,6 +29,15 @@ nav a:hover {
 
 
 header {
-	
+	text-align: center;
 }
 
+button {
+	margin: 0 auto;
+	display: block;
+}
+
+.inputbox {
+	display: block;
+	text-align: center;
+}
