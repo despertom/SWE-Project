@@ -6,7 +6,7 @@ function Result() {
     const { state } = useLocation();
     return (
         <div className="result">
-            <header className="result-header">Result: {state.net_yearly || "N/A"} CO2/year</header>
+            <h1 className="result-header">Result: {state.net_yearly || "N/A"} CO2/year</h1>
         </div>
     );
 }

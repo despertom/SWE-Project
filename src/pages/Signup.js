@@ -7,30 +7,20 @@ function Signup() {
 	const [password, setPassword] = useState('');
 
 	function signUp() {
-
+		// TODO send to server, if valid, proceed to login and say
 	}
 
 	return (
-		<div className="signup">
-			<header className="signup-header">Sign up</header>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<label className="inputbox">
-				Username:
-				<input value={username} onChange={e => setUsername(e.target.value)} />
-			</label>
-			<br />
-			<label className="inputbox">
-				Password:
-				<input value={password} onChange={e => setPassword(e.target.value)} />
-			</label>
-			<br />
+		<div class="signup">
+			<h1>Sign up</h1>
+			<div class="field">
+				<label>Username:</label>
+				<input class="inputbox" value={username} onChange={e => setUsername(e.target.value)} />
+			</div>
+			<div class="field">
+				<label>Password:</label>
+				<input class="inputbox" value={password} type="password" onChange={e => setPassword(e.target.value)} />
+			</div>
 			<button onClick={signUp}>Sign Up</button>
 		</div>
 	);
