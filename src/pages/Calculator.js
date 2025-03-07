@@ -68,20 +68,22 @@ function Home() {
 
     return (
         <div className="calculator">
-            <header className="calculator-header">GreenGauge</header>
-            <select 
-                key="items"
-                value={selectedItem}
-                onChange={(e) => setSelectedItem(e.target.value)}
-            >
-                <option value=""></option>
-                {Object.keys(optionItems).map((item) => (
-                    <option value={item}>{optionItems[item]}</option>
-                ))}
-                <option value="new">Something else...</option>
-            </select>
-            <input type="number" value={selectedCount} onChange={(e) => setSelectedCount(e.target.value)} />
-            <button onClick={addItemToTable}>Add</button>
+            <h1 className="calculator-header">GreenGauge</h1>
+            <div class="field">
+                <select 
+                    key="items"
+                    value={selectedItem}
+                    onChange={(e) => setSelectedItem(e.target.value)}
+                >
+                    <option value=""></option>
+                    {Object.keys(optionItems).map((item) => (
+                        <option value={item}>{optionItems[item]}</option>
+                    ))}
+                    <option value="new">Something else...</option>
+                </select>
+                <input type="number" value={selectedCount} onChange={(e) => setSelectedCount(e.target.value)} />
+                <button onClick={addItemToTable}>Add</button>
+            </div>
             <table border="1">
                 <thead>
                     <tr>

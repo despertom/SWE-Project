@@ -13,7 +13,7 @@ function Home() {
 
 	return (
 		<div className="home">
-			<header className="home-header">Home</header>
+			<h1>Home</h1>
 			<p>Time from flask: {currentTime}.</p>
 		</div>
 	);

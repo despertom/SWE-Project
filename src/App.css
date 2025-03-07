@@ -1,43 +1,110 @@
+/* Common CSS */
+:root {
+	--primary: #5f885f;
+	--secondary: #486948;
+	--text: #fff;
+	--button: #486948;
+	--button-hover: #324232;
+}
 body {
-	background-color: #aaa;
+	background-color: var(--primary);
 	margin: 0;
+	font-family: sans-serif;
+	color: var(--text);
+}
+table {
+	border-collapse: collapse;
+}
+select {
+	text-align: center;
+}
+select:hover {
+	background-color: var(--button-hover);
+}
+h1 {
+	text-align: center;
+	font-size: 3em;
 }
 
+/* Default colors / hover colors */
+input, select, button {
+	background-color: var(--secondary);
+	color: var(--text);
+	border: 0;
+	padding: 0;
+	height: 3rem;
+	border-radius: 1rem;
+}
+nav a:hover, button:hover {
+	background-color: var(--button-hover);
+}
+
+/* Navbar */
 nav { 
-	height: 3em;
-	margin-bottom: 1em;
-	background: #fff;
+	height: 3rem;
+	margin-bottom: 1rem;
+	background-color: var(--secondary);
 	display: flex;
 	justify-content: center;
 }
-
 nav a {
-	width: 5em;
+	width: 5rem;
 	height: 3em;
 	
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
-	font-size: 1em;
-	color: #000;
+	color: var(--text);
+	font-size: 1rem;
 	text-decoration: none;
 }
-nav a:hover {
-	background-color: #888;
+
+/* Login / Signup CSS */
+div.signup, div.login {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
-
-
-header {
-	text-align: center;
-}
-
-button {
+div.signup button, div.login button {
 	margin: 0 auto;
 	display: block;
+	width: min(50vw, 10rem)
+}
+div.signup .field label, div.login .field label {
+	width: 20%;
+	padding: 0.1rem;
+}
+div.signup .field .inputbox, div.login .field .inputbox {
+	width: 100%;
+}
+div.signup .field, div.login .field {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 0;
+	width: min(90vw, 50rem);
 }
 
-.inputbox {
-	display: block;
+/* Calculator CSS */
+div.calculator {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+div.calculator > * {
+	width: min(90vw, 50rem);
+	margin: 1rem 0;
+	border-radius: 1rem;
+}
+
+/* The first row of the calculator */
+div.calculator .field select {
+	width: 60%;
+}
+div.calculator .field input {
 	text-align: center;
+	width: 10%;
+}
+div.calculator .field button {
+	width: 30%;
 }
