@@ -22,7 +22,7 @@ def calculate():
         if item_id in user_defined_dict:
             co2_value = int(user_defined_dict[item_id])
         else:
-            co2_value = int(co2_lookup.get(item_id, 0)) # Default to 0
+            co2_value = co2_lookup.get(item_id, 0) # Default to 0
         net_co2 += co2_value * count
     return {'net_yearly': net_co2}
 
