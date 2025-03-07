@@ -24,6 +24,7 @@ select:hover {
 h1 {
 	text-align: center;
 	font-size: 3em;
+	margin: 1rem 0;
 }
 
 /* Default colors / hover colors */
@@ -42,7 +43,6 @@ nav a:hover, button:hover {
 /* Navbar */
 nav { 
 	height: 3rem;
-	margin-bottom: 1rem;
 	background-color: var(--secondary);
 	display: flex;
 	justify-content: center;
@@ -100,11 +100,16 @@ div.calculator > * {
 /* The first row of the calculator */
 div.calculator .field select {
 	width: 60%;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
 }
 div.calculator .field input {
 	text-align: center;
 	width: 10%;
+	border-radius: 0;
 }
 div.calculator .field button {
 	width: 30%;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
 }
