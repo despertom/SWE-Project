@@ -6,30 +6,20 @@ function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	function checkLogin() {
-
+		// TODO send to server, if valid, proceed
 	}
 
 	return (
-		<div className="login">
-			<header>GreenGauge Login</header>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<label className="inputbox">
-				Username:
-				<input value={username} onChange={e => setUsername(e.target.value)} />
-			</label>
-			<br/>
-			<label className="inputbox">
-				Password:
-				<input value={password} onChange={e => setPassword(e.target.value)} />
-			</label>
-			<br/>
+		<div class="login">
+			<h1>Login</h1>
+			<div class="field">
+				<label>Username:</label>
+				<input class="inputbox" value={username} onChange={e => setUsername(e.target.value)} />
+			</div>
+			<div class="field">
+				<label>Password:</label>
+				<input class="inputbox" value={password} type="password" onChange={e => setPassword(e.target.value)} />
+			</div>
 			<button onClick={checkLogin}>Log In</button>
 		</div>
 	);
