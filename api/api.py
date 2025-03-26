@@ -1,7 +1,12 @@
 import time
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from pymongo import MongoClient
+from user.models import User
+from database import get_db
 
 app = Flask(__name__)
+
+db = get_db()
 
 # Temporary lookup for CO2 values for predefined items (e.g., car, pickup, tree)
 co2_lookup = {
@@ -29,3 +34,8 @@ def calculate():
 @app.route('/time')
 def get_current_time():
     return {'time': time.time()}
+
+@app.route('/user/signup', methods=['POST'])
+def signup():
+    return User(db).signup()
+

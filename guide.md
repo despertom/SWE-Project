@@ -19,6 +19,15 @@ With venv activated, run this command in PowerShell:
 ```powershell
 pip install flask python-dotenv
 ```
+## Flask
+While in the same project root with venv activated, run this command in PowerShell to install the mongodb python driver:
+```powershell
+pip install Flask pymongo
+```
+Download MongoDB service, keep default settings: 
+https://www.mongodb.com/try/download/community
+
+*make sure to run MongoDB service before starting flask*
 
 ## React
 
