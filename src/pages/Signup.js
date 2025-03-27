@@ -8,7 +8,7 @@ function Signup() {
 
 	async function signUp() {
 			try {
-				const response = await fetch('/user/signup', { // Assuming your backend runs on the same host:port for development, otherwise specify the full URL (e.g., http://localhost:5000/user/signup)
+				const response = await fetch('http://localhost:5000/user/signup', { // Assuming your backend runs on the same host:port for development, otherwise specify the full URL (e.g., http://localhost:5000/user/signup)
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -19,6 +19,7 @@ function Signup() {
 					}),
 				});
 
+				console.log(response)
 				if (response.ok) {
 					const data = await response.json();
 					console.log('Signup successful:', data);

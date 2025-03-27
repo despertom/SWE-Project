@@ -25,4 +25,4 @@ class User:
         inserted_user = self.db.users.find_one({"_id": result.inserted_id})
         inserted_user['_id'] = str(inserted_user['_id']) #convert the id to a string
 
-        return jsonify(inserted_user),201 #201 is the preferred status code for creation.
+        return jsonify(inserted_user)  #,201 #201 is the preferred status code for creation.
