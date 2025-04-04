@@ -20,6 +20,11 @@ With venv activated, run this command in PowerShell:
 pip install flask python-dotenv pymongo
 ```
 
+Download MongoDB service, keep default settings: 
+https://www.mongodb.com/try/download/community
+
+*make sure to run MongoDB service before starting flask*
+
 ## React
 
 To run the next yarn commands, you might need to run this as administrator in PowerShell: 

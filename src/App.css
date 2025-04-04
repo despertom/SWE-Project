@@ -113,3 +113,14 @@ div.calculator .field button {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
+
+/* The prompt for the calculator */
+.popup-content {
+	background: none !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+.prompt {
+	background-color: var(--primary);
+	border-radius: 20px;
+}
