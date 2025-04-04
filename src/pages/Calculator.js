@@ -1,7 +1,62 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom/client";
 import logo from '../logo.svg';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
+
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
+function Prompt({ open, message, onClose, type = "text" }) {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleOk = () => {
+        onClose(inputValue);
+    };
+
+    const handleCancel = () => {
+        onClose(null);
+    };
+
+    return (
+        <Popup open={open} modal closeOnDocumentClick={false}>
+        <div class="prompt">
+            <div>
+                <div class="field">
+                    <label>{message}</label>
+                    <input
+                    class="inputbox"
+                    type={type}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    />
+                </div>
+                <button onClick={handleCancel}>Cancel</button>
+                <button onClick={handleOk}>OK</button>
+            </div>
+        </div>
+        </Popup>
+    );
+}
+
+function promptReact(message = "", inputType) {
+    return new Promise((resolve) => {
+        const container = document.createElement("div");
+        document.body.appendChild(container);
+
+        const root = ReactDOM.createRoot(container);
+
+        const handleClose = (value) => {
+        root.unmount();
+        container.remove();
+        resolve(value);
+        };
+
+        root.render(
+            <Prompt open={true} message={message} onClose={handleClose} type={inputType} />
+        );
+    });
+}
 
 function Home() {
     // Options can be added to the dropdown. 
@@ -19,13 +74,22 @@ function Home() {
 
     const navigate = useNavigate();
 
-    const addItemToTable = () => {
+    const addItemToTable = async () => {
         if (selectedItem == "new") {
             // Prompts are all temporary. This will be replaced with its own input fields.
-            const name = prompt("Name of added item:");
+            const name = await promptReact("Enter the name of the new item:");
+            if (name == null) {
+                return;
+            }
+            //const name = prompt("Name of added item:");
             const id = name.replaceAll(/\s/g, "").toLowerCase(); // TODO may collide with other ids, maybe use uid
-            const num = prompt("Net CO2 / year of item:");
-            alert(name + "\n" + id + "\n" + num); 
+            const num = await promptReact("Enter the carbon production (CO2/year) of the new item:", "number");
+            console.log(num)
+            console.log(parseInt(num))
+            if ((num == null || num == "") || parseInt(num) == NaN) {
+                return;
+            }
+            // TODO make sure num is a number
             setUserDefinedItems([...userDefinedItems, {id: id, value: num}])
             setOptionItems({
                 ...optionItems,
@@ -33,7 +97,7 @@ function Home() {
             });
             setSelectedItem(id);
         } else if (selectedItem) {
-            setSelectedItems([...selectedItems, {id: selectedItem, count: selectedCount}]); // TODO use object/json here to handle counts.
+            setSelectedItems([...selectedItems, {id: selectedItem, count: selectedCount}]);
             setSelectedItem(""); // Unselect it
             setSelectedCount(1);
         }

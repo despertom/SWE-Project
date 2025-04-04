@@ -20,7 +20,10 @@ With venv activated, run this command in PowerShell:
 pip install flask python-dotenv pymongo flask_cors
 ```
 
-Additionally, install Mongo DB Compass.
+Download MongoDB service, keep default settings: 
+https://www.mongodb.com/try/download/community
+
+*make sure to run MongoDB service before starting flask*
 
 ## React
 
