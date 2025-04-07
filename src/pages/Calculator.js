@@ -58,7 +58,7 @@ function promptReact(message = "", inputType) {
     });
 }
 
-function Home() {
+function Calculator() {
     // Options can be added to the dropdown. 
     const [optionItems, setOptionItems] = useState({
         car: "Sedan",
@@ -71,6 +71,8 @@ function Home() {
     // Selected item changes when dropdown changed.
     const [selectedItem, setSelectedItem] = useState("");
     const [selectedCount, setSelectedCount] = useState(1);
+    // Get the username from local storage
+    const username = localStorage.getItem('username');
 
     const navigate = useNavigate();
 
@@ -133,6 +135,8 @@ function Home() {
     return (
         <div className="calculator">
             <h1 className="calculator-header">GreenGauge</h1>
+            {/* Display username */}
+            {username && <h2>Hello {username}</h2>}
             <div class="field">
                 <select 
                     key="items"
@@ -169,4 +173,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Calculator;

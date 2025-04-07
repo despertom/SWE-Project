@@ -28,4 +28,19 @@ class User:
         inserted_user = self.db.users.find_one({"_id": result.inserted_id})
         inserted_user['_id'] = str(inserted_user['_id'])  # convert the id to a string
 
-        return jsonify(inserted_user), 201  # 201 is the preferred status code for creation.
+        return jsonify(inserted_user), 201 
+    
+    def login(self):
+        data = request.get_json()
+        if not data or 'username' not in data or 'password' not in data:
+            return jsonify({'message': 'Missing username or password'}), 400
+
+        username = data['username']
+        password = data['password']
+
+        user = self.db.users.find_one({'username': username, 'password': password})
+        if user:
+            user['_id'] = str(user['_id'])
+            return jsonify(user), 200
+        else:
+            return jsonify({'message': 'Invalid username or password'}), 401

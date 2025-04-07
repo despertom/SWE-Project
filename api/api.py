@@ -42,3 +42,7 @@ def get_current_time():
 def signup():
     return User(db).signup()
 
+@app.route('/user/login', methods=['POST'])
+def login():
+    return User(db).login()
+
