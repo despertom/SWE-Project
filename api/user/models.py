@@ -14,7 +14,10 @@ class User:
         username = data['username']
         password = data['password']
 
-        #TODO: add logic for username already exists
+        # Check if username already exists
+        existing_user = self.db.users.find_one({'username': username})
+        if existing_user:
+            return jsonify({'message': 'Username already exists'}), 409 # 409 Conflict
 
         user = {
             'username': username,
@@ -23,6 +26,6 @@ class User:
 
         result = self.db.users.insert_one(user)
         inserted_user = self.db.users.find_one({"_id": result.inserted_id})
-        inserted_user['_id'] = str(inserted_user['_id']) #convert the id to a string
+        inserted_user['_id'] = str(inserted_user['_id'])  # convert the id to a string
 
-        return jsonify(inserted_user)  #,201 #201 is the preferred status code for creation.
+        return jsonify(inserted_user), 201  # 201 is the preferred status code for creation.
