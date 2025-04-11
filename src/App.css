@@ -124,3 +124,22 @@ div.calculator .field button {
 	background-color: var(--primary);
 	border-radius: 20px;
 }
+
+.prompt {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.prompt div .field input {
+	width: 100%;
+}
+.prompt .buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+.prompt .buttons button {
+	width: 40%;
+}

@@ -31,8 +31,10 @@ function Prompt({ open, message, onClose, type = "text" }) {
                     onChange={(e) => setInputValue(e.target.value)}
                     />
                 </div>
-                <button onClick={handleCancel}>Cancel</button>
-                <button onClick={handleOk}>OK</button>
+                <div class="buttons"> 
+					<button onClick={handleCancel}>Cancel</button>
+					<button onClick={handleOk}>OK</button>
+				</div>
             </div>
         </div>
         </Popup>
