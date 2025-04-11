@@ -1,10 +1,12 @@
 import logo from '../logo.svg';
 import { useState } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const navigate = useNavigate();
 
 	async function signUp() {
 			try {
@@ -27,10 +29,12 @@ function Signup() {
 					// Reset fields
 					setUsername('')
 					setPassword('')
+					navigate('/login');
 				} else {
 					const errorData = await response.json();
 					console.error('Signup failed:', errorData);
 					// Handle signup failure (e.g., show error message)
+					alert(errorData.message)
 				}
 			} catch (error) {
 				console.error('Error during signup:', error);

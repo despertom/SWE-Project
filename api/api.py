@@ -6,7 +6,8 @@ from database import get_db
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
 
 db = get_db()
 
@@ -40,4 +41,8 @@ def get_current_time():
 @app.route('/user/signup', methods=['POST'])
 def signup():
     return User(db).signup()
+
+@app.route('/user/login', methods=['POST'])
+def login():
+    return User(db).login()
 
