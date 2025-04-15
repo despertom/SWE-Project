@@ -2,6 +2,7 @@ import logo from '../logo.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import { alertReact } from '../components/Prompt'
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -32,7 +33,7 @@ function Login() {
                 const errorData = await response.json();
                 console.error('Login failed:', errorData);
                 // Handle login failure (e.g., show error message)
-                alert(errorData.message)
+                const nothing = await alertReact(errorData.message);
             }
         } catch (error) {
             console.error('Error during login:', error);

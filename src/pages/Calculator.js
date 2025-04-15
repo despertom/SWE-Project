@@ -1,64 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from "react-dom/client";
-import logo from '../logo.svg';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
-
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-
-function Prompt({ open, message, onClose, type = "text" }) {
-    const [inputValue, setInputValue] = useState("");
-
-    const handleOk = () => {
-        onClose(inputValue);
-    };
-
-    const handleCancel = () => {
-        onClose(null);
-    };
-
-    return (
-        <Popup open={open} modal closeOnDocumentClick={false}>
-        <div class="prompt">
-            <div>
-                <div class="field">
-                    <label>{message}</label>
-                    <input
-                    class="inputbox"
-                    type={type}
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    />
-                </div>
-                <div class="buttons"> 
-					<button onClick={handleCancel}>Cancel</button>
-					<button onClick={handleOk}>OK</button>
-				</div>
-            </div>
-        </div>
-        </Popup>
-    );
-}
-
-function promptReact(message = "", inputType) {
-    return new Promise((resolve) => {
-        const container = document.createElement("div");
-        document.body.appendChild(container);
-
-        const root = ReactDOM.createRoot(container);
-
-        const handleClose = (value) => {
-        root.unmount();
-        container.remove();
-        resolve(value);
-        };
-
-        root.render(
-            <Prompt open={true} message={message} onClose={handleClose} type={inputType} />
-        );
-    });
-}
+import { promptReact } from '../components/Prompt'
 
 function Calculator() {
     // Options can be added to the dropdown. 
@@ -98,20 +41,16 @@ function Calculator() {
                 return;
             }
             //const name = prompt("Name of added item:");
-            const id = name.replaceAll(/\s/g, "").toLowerCase(); // TODO may collide with other ids, maybe use uid
             const num = await promptReact("Enter the carbon production (CO2/year) of the new item:", "number");
-            console.log(num)
-            console.log(parseInt(num))
             if ((num == null || num == "") || parseInt(num) == NaN) {
                 return;
             }
-            // TODO make sure num is a number
-            setUserDefinedItems([...userDefinedItems, {id: id, value: num}])
+            setUserDefinedItems([...userDefinedItems, {id: name, value: num}])
             setOptionItems([
                 ...optionItems,
                 name
             ]);
-            setSelectedItem(id);
+            setSelectedItem(name);
         } else if (selectedItem) {
             setSelectedItems([...selectedItems, {id: selectedItem, count: selectedCount}]);
             setSelectedItem(""); // Unselect it
