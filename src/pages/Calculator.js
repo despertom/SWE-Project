@@ -62,11 +62,7 @@ function promptReact(message = "", inputType) {
 
 function Calculator() {
     // Options can be added to the dropdown. 
-    const [optionItems, setOptionItems] = useState({
-        car: "Sedan",
-        pickup: "Pickup truck",
-        tree: "Tree",
-    });
+    const [optionItems, setOptionItems] = useState([]);
     // User defined items, Selected items change whenever button pressed.
     const [userDefinedItems, setUserDefinedItems] = useState([])
     const [selectedItems, setSelectedItems] = useState([]);
@@ -77,6 +73,22 @@ function Calculator() {
     const username = localStorage.getItem('username');
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await fetch('http://localhost:5000/getoptions');
+                const data = await res.json();
+                console.log('Fetched data:', data);
+                setOptionItems([
+                    ...optionItems,
+                    ...data.options
+                ]);
+            } catch (err) {
+                console.error('Fetch error:', err);
+            }
+        })();
+    }, []);
 
     const addItemToTable = async () => {
         if (selectedItem == "new") {
@@ -95,10 +107,10 @@ function Calculator() {
             }
             // TODO make sure num is a number
             setUserDefinedItems([...userDefinedItems, {id: id, value: num}])
-            setOptionItems({
+            setOptionItems([
                 ...optionItems,
-                [id]: name
-            });
+                name
+            ]);
             setSelectedItem(id);
         } else if (selectedItem) {
             setSelectedItems([...selectedItems, {id: selectedItem, count: selectedCount}]);
@@ -146,8 +158,8 @@ function Calculator() {
                     onChange={(e) => setSelectedItem(e.target.value)}
                 >
                     <option value=""></option>
-                    {Object.keys(optionItems).map((item) => (
-                        <option value={item}>{optionItems[item]}</option>
+                    {optionItems.map((item) => (
+                        <option value={item}>{item}</option>
                     ))}
                     <option value="new">Something else...</option>
                 </select>
@@ -164,7 +176,7 @@ function Calculator() {
                     {selectedItems.map((item, index) => (
                         <tr key={index}>
                             {/* Assuming this can always find. Bad things will happen if it wont. */}
-                            <td>{optionItems[item.id]}</td>
+                            <td>{item.id}</td>
                             <td>{item.count}</td>
                         </tr>
                     ))}
