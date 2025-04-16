@@ -27,9 +27,24 @@ function Calculator() {
                     ...optionItems,
                     ...data.options
                 ]);
+                let loadedUserDefined = [];
+                if (username) {
+                    const res = await fetch(`http://localhost:5000/user/get-calculator-data?username=${encodeURIComponent(username)}`);
+                    if (res.ok) {
+                        const savedData = await res.json();
+                        console.log('Fetched user data:', savedData);
+                        //set dropdown state with saved data
+                        setSelectedItems(savedData.selectedItems || []);
+                        setUserDefinedItems(savedData.userDefinedItems || []);
+                        loadedUserDefined = savedData.userDefinedItems || [];
+                    } else if (res.status !== 404) { 
+                        console.error('Failed to fetch user data:', await res.text());
+                    }
+                }
             } catch (err) {
                 console.error('Fetch error:', err);
             }
+
         })();
     }, []);
 
@@ -58,7 +73,42 @@ function Calculator() {
         }
     };
 
+    //store user data before calculate
+    const saveCalculatorData = async () => {
+        if (!username) {
+            console.log("Not logged in");
+            return true; 
+        }
+
+        try {
+            const response = await fetch('http://localhost:5000/user/save-calculator-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    selectedItems: selectedItems,
+                    userDefinedItems: userDefinedItems,
+                }),
+            });
+            if (response.ok) {
+                console.log('Calculator data saved successfully.');
+            } else {
+                console.log('Failed to save calculator data:');
+            }
+            return true; 
+
+        } catch (error) {
+            console.error('Error saving calculator data:', error);
+            alert('Something went wrong while saving');
+            return false; //failed :(
+        }
+    };
+
     const calculate = async () => {
+        //save user data first
+        const saved = await saveCalculatorData();
         try {
             const res = await fetch("http://localhost:5000/calculate", {
                 method: 'POST',
