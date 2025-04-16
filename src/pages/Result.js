@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import '../App.css';
 
 function Result() {
@@ -8,6 +8,7 @@ function Result() {
         <div className="result">
             <h1 className="result-header">Result: {state.net_yearly || "N/A"} kgCO2/year</h1>
             <h1 className="result-prompt">Your carbon footprint is {resultOutcome(state.net_yearly)}</h1>
+            <h1 className="result-prompt">Read more <Link to="/info">here.</Link></h1>
         </div>
     );
 }
