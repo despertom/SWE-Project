@@ -99,3 +99,53 @@ def signup():
 def login():
     return User(db).login()
 
+@app.route('/user/save-calculator-data', methods=['POST'])
+def save_calculator_data():
+    data = request.get_json()
+    if not data or 'username' not in data or 'selectedItems' not in data or 'userDefinedItems' not in data:
+        return jsonify({'message': 'Missing required data (username, selectedItems, userDefinedItems)'}), 400
+
+    username = data['username']
+    selected_items = data['selectedItems']
+    user_defined_items = data['userDefinedItems']
+
+    try:
+        #find user
+        user = db.users.find_one({'username': username})
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+
+        #insert new data
+        result = db.users.update_one(
+            {'username': username},
+            {'$set': {
+                'savedSelectedItems': selected_items,
+                'savedUserDefinedItems': user_defined_items
+            }}
+        )
+        return jsonify({'message': 'Calculator data saved successfully'}), 200
+
+    except Exception as e:
+        print(f"Error saving calculator data: {e}") #log error
+        return jsonify({'message': 'Server error saving data'}), 500
+
+@app.route('/user/get-calculator-data', methods=['GET'])
+def get_calculator_data():
+    username = request.args.get('username') #get username
+
+    if not username:
+        return jsonify({'message': 'Username query parameter is required'}), 400
+
+    try:
+        user = db.users.find_one({'username': username})
+        
+        saved_data = {
+            'selectedItems': user.get('savedSelectedItems', []),
+            'userDefinedItems': user.get('savedUserDefinedItems', [])
+        }
+        return jsonify(saved_data), 200
+
+    except Exception as e:
+        print(f"Error fetching calculator data: {e}")
+        return jsonify({'message': 'Server error fetching data'}), 500
+
