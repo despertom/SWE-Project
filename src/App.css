@@ -124,3 +124,12 @@ div.calculator .field button {
 	background-color: var(--primary);
 	border-radius: 20px;
 }
+
+/* Result CSS */
+h1.result-header {
+	padding: 50px;
+}
+
+h1.result-prompt {
+	align-content: center;
+}
