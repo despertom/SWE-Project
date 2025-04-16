@@ -21,7 +21,9 @@ class User:
 
         user = {
             'username': username,
-            'password': password
+            'password': password,
+            'savedSelectedItems': [], #user choices initialized as empy lists
+            'savedUserDefinedItems': []
         }
 
         result = self.db.users.insert_one(user)
