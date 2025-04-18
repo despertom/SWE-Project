@@ -15,10 +15,9 @@ function Info(){
       </ul>
       <h1>GreenGauge FAQ</h1>
       <ul>
-        <li>Q: <br /> A:</li><br />
-        <li>Q: <br /> A:</li><br />
-        <li>Q: <br /> A:</li><br />
-        <li>Q: <br /> A:</li><br />
+        <li>Q: How can I add my own information to the calculator?<br /> A: First, you need to provide the name of the object you are adding. Then, you hhave to provide the carbon production of the object in units of pounds of carbon per year. The item will be saved to our database so that other users can add them to their calculations without having to submit a new object themselves.</li><br />
+        <li>Q: How is the total carbon footprint calculated?<br /> A: For the preloaded datapoints, there is a set carbon footprint value to represent its impact on the environment. </li><br />
+        <li>Q: Is my data visible to other users?<br /> A: No, data entered into the calculator is inaccessible to other users. However, the data is stored in our database and is used for creating percentiles for user to user comparisons.</li><br /> 
       </ul>
       <h1>Sources</h1>
       <ul>
