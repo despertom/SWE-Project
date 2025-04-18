@@ -21,10 +21,10 @@ function Info(){
       </ul>
       <h1>Sources</h1>
       <ul>
-        <li>https://greenly.earth/en-us/blog/company-guide/what-is-the-average-american-carbon-footprint-and-how-to-reduce-it</li><br />
-        <li>https://wmo.int/media/news/record-carbon-emissions-highlight-urgency-of-global-greenhouse-gas-watch#:~:text=This%20includes%20fossil%20CO2%20emissions%20of%2037.4,(deforestation)%2C%20according%20to%20the%20Global%20Carbon%20Budget.</li><br/>
-        <li>https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide#:~:text=Why%20carbon%20dioxide%20matters,pH%20is%20called%20ocean%20acidification.</li><br/>
-        <li>https://science.nasa.gov/climate-change/effects/</li><br/>
+        <li><a href="https://greenly.earth/en-us/blog/company-guide/what-is-the-average-american-carbon-footprint-and-how-to-reduce-it">Greenly</a></li><br />
+        <li><a href="https://wmo.int/media/news/record-carbon-emissions-highlight-urgency-of-global-greenhouse-gas-watch#:~:text=This%20includes%20fossil%20CO2%20emissions%20of%2037.4,(deforestation)%2C%20according%20to%20the%20Global%20Carbon%20Budget.">wmo.int</a></li><br/>
+        <li><a href="https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide#:~:text=Why%20carbon%20dioxide%20matters,pH%20is%20called%20ocean%20acidification.">climate.gov</a></li><br/>
+        <li><a href="https://science.nasa.gov/climate-change/effects/">NASA</a></li><br/>
       </ul>
     </div>
   );

@@ -233,3 +233,14 @@ div.calculator .field button {
 .home .buttons a:hover {
 	background-color: var(--button-hover);
 }
+
+/* info */
+.information ul, .information p {
+	width: 60vw;
+	margin: 0 20vw;
+	padding: 0;
+}
+
+a {
+	color: var(--text);
+}
